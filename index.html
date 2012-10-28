@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playtin Game-Off</title>
+  <script src="./js/utilities/utilities.js" type="text/javascript"></script>
+  <script src="./js/utilities/vector.js" type="text/javascript"></script>
+  <script src="./js/utilities/area.js" type="text/javascript"></script>
+  <script src="./js/utilities/circle.js" type="text/javascript"></script>
+  <script src="./js/utilities/feedback.js" type="text/javascript"></script>
+  <script src="./js/utilities/notifier.js" type="text/javascript"></script>
+  <script src="./js/utilities/path.js" type="text/javascript"></script>
+  <script src="./js/utilities/state_machine.js" type="text/javascript"></script>
+  <script src="./js/player/player.js" type="text/javascript"></script>
+  <script src="./js/player/action.js" type="text/javascript"></script>
+  <script src="./js/player/animation.js" type="text/javascript"></script>
+  <script src="./js/player/behaviour.js" type="text/javascript"></script>
+  <script src="./js/player/game_object.js" type="text/javascript"></script>
+  <script src="./js/player/game.js" type="text/javascript"></script>
+  <script src="./js/player/graphic.js" type="text/javascript"></script>
+  <script src="./js/player/mouse.js" type="text/javascript"></script>
+  <script src="./js/player/movement.js" type="text/javascript"></script>
+  <script src="./js/player/trigger.js" type="text/javascript"></script>
+  <script src="./js/player/parser/parser.js" type="text/javascript"></script>
+  <script src="./js/player/parser/loader.js" type="text/javascript"></script>
+  <script src="./js/main.js" type="text/javascript"></script>
+  <link href="./css/player.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="player">
+  <canvas id="playerCanvas" width="640" height="390"></canvas>
+  
+  <div class="playerUI">
+    
+    <div class="loadScreen">&nbsp;&nbsp;&nbsp;loading...</div>
+    
+    <div class="endBg"></div>
+    <div class="winScreen endScreen">You win!</div>
+    <div class="loseScreen endScreen">You lose!</div>
+    
+    <div class="titleScreen">
+      <div class="playButton"></div>
+      <div class="titleBar">
+        <div class="titleBg"></div>
+        <div class="titleText">
+          <strong>Oktoberfest Dirndl</strong>
+          <span>by Zeus</span>
+          <i class="icon-chevron-up icon-white"></i>
+          <h2>Instructions</h2>
+          <div class="instruction">Click on the dirndl if the bavarians are ordering new beer</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="errorScreen">
+      <h2>An error occurred while loading the game.</h2>
+    </div>
+  
+  </div>
+
+  <div class="playerBar">
+    <canvas class="playerTimeline"></canvas>
+    <div class="playerTimeWrapper">
+      <div class="playerTime">00:00</div>
+    </div>
+    <a href="/play/35-oktoberfest-dirndl"><div class="playerLogo"></div></a>
+  </div>
+</div>
+
+<script>
+  $(document).ready( function() {
+    player_main( {"version":4,"title":"Oktoberfest Dirndl","instructions":"Click on the dirndl if the bavarians are ordering new beer","duration":15,"backgroundID":173,"gameObjects":[{"ID":22,"name":"lion","graphicID":32,"position":{"x":308,"y":6},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":4}]}]},{"ID":18,"name":"german_flag","graphicID":25,"position":{"x":306,"y":81},"behaviours":[]},{"ID":20,"name":"brezel2","graphicID":23,"position":{"x":365,"y":83},"behaviours":[]},{"ID":19,"name":"brezel","graphicID":23,"position":{"x":244,"y":86},"behaviours":[]},{"ID":17,"name":"blackbrid","graphicID":172,"position":{"x":442,"y":223},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":7}]},{"triggers":[{"ID":"timeRandom","time":2,"time2":60}],"actions":[{"ID":"counterSet","counter":1}]},{"triggers":[{"ID":"touchObject","objectID":17,"object2ID":1},{"ID":"counterEqualsNumber","objectID":17,"counter":1}],"actions":[{"ID":"artToFrame","frame":8},{"ID":"counterUp"}]},{"triggers":[{"ID":"clickObject","objectID":1},{"ID":"touchObject","objectID":17,"object2ID":1},{"ID":"counterEqualsNumber","objectID":17,"counter":2}],"actions":[{"ID":"artToFrame","frame":7},{"ID":"counterDown"}]}],"boundingArea":{"x":-36,"y":-59,"width":55,"height":127}},{"ID":16,"name":"greybeard","graphicID":172,"position":{"x":275,"y":230},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":5}]},{"triggers":[{"ID":"timeRandom","time":7,"time2":60}],"actions":[{"ID":"counterSet","counter":1}]},{"triggers":[{"ID":"touchObject","objectID":16,"object2ID":1},{"ID":"counterEqualsNumber","objectID":16,"counter":1}],"actions":[{"ID":"artToFrame","frame":6},{"ID":"counterUp"}]},{"triggers":[{"ID":"clickObject","objectID":1},{"ID":"touchObject","objectID":16,"object2ID":1},{"ID":"counterEqualsNumber","objectID":16,"counter":2}],"actions":[{"ID":"artToFrame","frame":5},{"ID":"counterDown"}]}],"boundingArea":{"x":-35,"y":-53,"width":59,"height":130}},{"ID":15,"name":"blond","graphicID":172,"position":{"x":364,"y":225},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":3}]},{"triggers":[{"ID":"timeRandom","time":0,"time2":48}],"actions":[{"ID":"counterSet","counter":1}]},{"triggers":[{"ID":"touchObject","objectID":15,"object2ID":1},{"ID":"counterEqualsNumber","objectID":15,"counter":1}],"actions":[{"ID":"artToFrame","frame":4},{"ID":"counterUp"}]},{"triggers":[{"ID":"clickObject","objectID":1},{"ID":"touchObject","objectID":15,"object2ID":1},{"ID":"counterEqualsNumber","objectID":15,"counter":2}],"actions":[{"ID":"artToFrame","frame":3},{"ID":"counterDown"}]}],"boundingArea":{"x":-35,"y":-53,"width":59,"height":130}},{"ID":2,"name":"leftOne","graphicID":172,"position":{"x":182,"y":225},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":1}]},{"triggers":[{"ID":"timeRandom","time":0,"time2":52}],"actions":[{"ID":"counterSet","counter":1}]},{"triggers":[{"ID":"touchObject","objectID":2,"object2ID":1},{"ID":"counterEqualsNumber","objectID":2,"counter":1}],"actions":[{"ID":"artToFrame","frame":2},{"ID":"counterUp"}]},{"triggers":[{"ID":"clickObject","objectID":1},{"ID":"touchObject","objectID":2,"object2ID":1},{"ID":"counterEqualsNumber","objectID":2,"counter":2}],"actions":[{"ID":"artToFrame","frame":1},{"ID":"counterDown"}]}],"boundingArea":{"x":-35,"y":-53,"width":59,"height":130}},{"ID":10,"name":"table_foot2","graphicID":177,"position":{"x":506,"y":289},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"scaleSize","scale":70,"speed":4}]}]},{"ID":9,"name":"table_foot","graphicID":177,"position":{"x":126,"y":293},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"scaleSize","scale":70,"speed":4}]}]},{"ID":7,"name":"table_top2","graphicID":176,"position":{"x":396,"y":255},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":2}]}]},{"ID":6,"name":"table_top","graphicID":176,"position":{"x":226,"y":256},"behaviours":[]},{"ID":14,"name":"beer_krug4","graphicID":178,"position":{"x":418,"y":227},"behaviours":[]},{"ID":13,"name":"beer_krug3","graphicID":178,"position":{"x":338,"y":231},"behaviours":[]},{"ID":12,"name":"beer_krug2","graphicID":178,"position":{"x":157,"y":229},"behaviours":[]},{"ID":11,"name":"beer_krug","graphicID":178,"position":{"x":249,"y":229},"behaviours":[]},{"ID":1,"name":"dirndl","graphicID":171,"position":{"x":48,"y":265},"behaviours":[{"triggers":[{"ID":"gameStart"}],"actions":[{"ID":"artToFrame","frame":3},{"ID":"scaleSize","scale":90,"speed":2}]},{"triggers":[{"ID":"timeExact","time":6}],"actions":[{"ID":"artPlay","frame":1,"frame2":2,"mode":"ping-pong","speed":1},{"ID":"moveAlongPath","path":[{"x":46,"y":273},{"x":613,"y":265}],"mode":"ping-pong","speed":2}]},{"triggers":[{"ID":"touchArea","objectID":1,"area":{"x":633,"y":163,"width":56,"height":208}}],"actions":[{"ID":"flipObject","mode":"horizontally"},{"ID":"counterSet","counter":1}]},{"triggers":[{"ID":"touchArea","objectID":1,"area":{"x":-35,"y":161,"width":56,"height":208}},{"ID":"counterGreaterNumber","objectID":1,"counter":0}],"actions":[{"ID":"flipObject","mode":"horizontally"}]},{"triggers":[{"ID":"gameWasWon"}],"actions":[{"ID":"artToFrame","frame":3}]}],"boundingArea":{"x":-35,"y":-99,"width":60,"height":198}},{"ID":21,"name":"bayer","graphicID":15,"position":{"x":-62,"y":301},"behaviours":[{"triggers":[{"ID":"timeRandom","time":70,"time2":93}],"actions":[{"ID":"artPlay","frame":1,"frame2":2,"mode":"ping-pong","speed":0},{"ID":"moveInDirection","angle":"0.00","speed":1}]},{"triggers":[{"ID":"timeExact","time":100},{"ID":"counterSmallerNumber","objectID":2,"counter":2},{"ID":"counterSmallerNumber","objectID":15,"counter":2},{"ID":"counterSmallerNumber","objectID":16,"counter":2},{"ID":"counterSmallerNumber","objectID":17,"counter":2}],"actions":[{"ID":"gameWin"}]}]}],"graphics":[{"ID":173,"frameWidth":640,"frameHeight":390,"frameCount":1,"url":"http://s3.amazonaws.com/mbgfx/graphics/173/beer_tent.png?1349721446"},{"ID":32,"frameWidth":130,"frameHeight":80,"frameCount":4,"url":"http://s3.amazonaws.com/mbgfx/graphics/32/lion.png?1345391529"},{"ID":25,"frameWidth":108,"frameHeight":71,"frameCount":1,"url":"http://s3.amazonaws.com/mbgfx/graphics/25/german_flag.png?1345229749"},{"ID":23,"frameWidth":128,"frameHeight":128,"frameCount":1,"url":"http://s3.amazonaws.com/mbgfx/graphics/23/brezel.png?1345229445"},{"ID":172,"frameWidth":100,"frameHeight":160,"frameCount":8,"url":"http://s3.amazonaws.com/mbgfx/graphics/172/bavarians.png?1349647306"},{"ID":177,"frameWidth":32,"frameHeight":102,"frameCount":1,"url":"http://s3.amazonaws.com/mbgfx/graphics/177/table_foot.png?1349722547"},{"ID":176,"frameWidth":256,"frameHeight":40,"frameCount":2,"url":"http://s3.amazonaws.com/mbgfx/graphics/176/table_top.png?1349722425"},{"ID":178,"frameWidth":32,"frameHeight":32,"frameCount":1,"url":"http://s3.amazonaws.com/mbgfx/graphics/178/beer_krug.png?1349722820"},{"ID":171,"frameWidth":152,"frameHeight":256,"frameCount":3,"url":"http://s3.amazonaws.com/mbgfx/graphics/171/dirndl.png?1349644518"},{"ID":15,"frameWidth":120,"frameHeight":180,"frameCount":2,"url":"http://s3.amazonaws.com/mbgfx/graphics/15/bayer.png?1345212453"}]}, 35 );
+  });
+</script>
+</body>
+</html>
