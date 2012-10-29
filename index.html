@@ -4,6 +4,8 @@
   <title>Playtin - Github Game Off - mini games</title>
   <link href="./favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <link href="./css/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="./css/player.css" media="screen" rel="stylesheet" type="text/css" />
 
   <script src="./js/data/game_data.js" type="text/javascript"></script>
@@ -35,51 +37,88 @@
   <script src="./js/main.js" type="text/javascript"></script>  
 </head>
 <body>
-<div id="player">
-  <canvas id="playerCanvas" width="640" height="390"></canvas>
-  
-  <div class="playerUI">
-    
-    <div class="loadScreen">&nbsp;&nbsp;&nbsp;loading...</div>
-    
-    <div class="endBg"></div>
-    <div class="winScreen endScreen">You win!</div>
-    <div class="loseScreen endScreen">You lose!</div>
-    
-    <div class="titleScreen">
-      <div class="playButton"></div>
-      <div class="titleBar">
-        <div class="titleBg"></div>
-        <div class="titleText">
-          <strong>Oktoberfest Dirndl</strong>
-          <span>by Zeus</span>
-          <i class="icon-chevron-up icon-white"></i>
-          <h2>Instructions</h2>
-          <div class="instruction">Click on the dirndl if the bavarians are ordering new beer</div>
+
+<div class="container">
+
+<h1><img src="images/logo_red.png"></h1>
+
+<div class="row">
+
+  <div class="span9">    
+
+    <div id="player">
+      <canvas id="playerCanvas" width="640" height="390"></canvas>
+      
+      <div class="playerUI">
+        
+        <div class="loadScreen">&nbsp;&nbsp;&nbsp;loading...</div>
+        
+        <div class="endBg"></div>
+        <div class="winScreen endScreen">You win!</div>
+        <div class="loseScreen endScreen">You lose!</div>
+        
+        <div class="titleScreen">
+          <div class="playButton"></div>
+          <div class="titleBar">
+            <div class="titleBg"></div>
+            <div class="titleText">
+              <strong>Oktoberfest Dirndl</strong>
+              <span>by Zeus</span>
+              <i class="icon-chevron-up icon-white"></i>
+              <h2>Instructions</h2>
+              <div class="instruction">Click on the dirndl if the bavarians are ordering new beer</div>
+            </div>
+          </div>
         </div>
+        
+        <div class="errorScreen">
+          <h2>An error occurred while loading the game.</h2>
+        </div>
+      
+      </div>
+
+      <div class="playerBar">
+        <canvas class="playerTimeline"></canvas>
+        <div class="playerTimeWrapper">
+          <div class="playerTime">00:00</div>
+        </div>
+        <a href="http://playtin.com"><div class="playerLogo"></div></a>
       </div>
     </div>
-    
-    <div class="errorScreen">
-      <h2>An error occurred while loading the game.</h2>
-    </div>
-  
+
   </div>
 
-  <div class="playerBar">
-    <canvas class="playerTimeline"></canvas>
-    <div class="playerTimeWrapper">
-      <div class="playerTime">00:00</div>
+  <div class="span3">
+
+    <div class="box boxViolette">
+      <h3>About</h3>
+      These mini games were made for the Gihub Game-off Challenge with the Playtin HTML5 game editor.
     </div>
-    <a href="/play/35-oktoberfest-dirndl"><div class="playerLogo"></div></a>
+
+    <div class="box boxBlue">      
+      Some like buttons can be placed here.
+    </div>
+
+    <div class="box boxRed">      
+      Here we can put another text about playtin. I.e. how we made the games and that everything is fancy html5 stuff.
+    </div>
+
+    <div class="box boxGreen">      
+      Well, I copied the colors from a Windows 8 screenshot. But I find them actually pretty nice.
+    </div>
+
   </div>
+
 </div>
+
+</div>
+
 
 <script>
   $(document).ready( function() {
 
     player_main( game_data[0].data, game_data[0].id );
-    
+
   });
 </script>
 </body>
