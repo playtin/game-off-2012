@@ -11,7 +11,7 @@ To accelerate the development of the games we will use the playtin game editor.
 If you can't wait until the end of November, you can already play some mini games on playtin.com
 or create your own one ;)
 
-### What we have used so far:
+## What we have used so far:
 
 * JQuery
 * Bootstrap
