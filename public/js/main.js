@@ -42,13 +42,13 @@ function randomGame(player) {
       player_main( game_data[random_index].data, game_data[random_index].id);
   }, 5000);  
 
-}
+};
 
 function player_main( data, game_id ) {
   
   game_id = game_id || 0;
 
-  window.player = new Player();  
+  window.player = new Player();
 
   function increaseCounter( _isWin ) {
     
@@ -59,6 +59,7 @@ function player_main( data, game_id ) {
       success : function() {}
     }); 
 
+    addToPlaylist(data.title, game_id, _isWin); // Todo -> has to be index of game_data
     randomGame(window.player);
 
   };  
@@ -75,7 +76,7 @@ function player_main( data, game_id ) {
     if ( data ) {
   
       player.parse( data );
-  
+
     }
     
     if ( game_id ) {
@@ -97,3 +98,22 @@ function player_main( data, game_id ) {
                  .on('selectstart', false);
     };
 })(jQuery);
+
+
+function addToPlaylist(_title, _id, _isWin) {
+
+  var ul = $('.playlist');
+  var template = ul.find('.template');
+
+  var newLi = template.clone().removeClass("template").hide();
+  newLi.attr("data-id", _id);
+
+  var titleEle = newLi.find(".title");
+  titleEle.html(_title);
+
+  var statusClass = _isWin ? "win" : "lose";
+  titleEle.addClass(statusClass);
+
+  ul.prepend(newLi);
+  newLi.show(800);
+};

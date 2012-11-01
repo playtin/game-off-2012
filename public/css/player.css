@@ -10,7 +10,8 @@ h1 {
 }
 
 header {
-  margin:2em 0 0.5em 0;;
+  margin:4em 0 0.5em 0;
+  overflow: hidden;
 }
 
 h3 {
@@ -20,6 +21,34 @@ h3 {
 #endlessButton {
   margin:2em 0 0 8px;
 }
+
+/* PLAYLIST */
+
+.playlist {
+  list-style-type: none;
+  margin:1em 0; padding:0;
+}
+
+.playlist .template {
+  display: none;
+}
+
+.playlist .box {
+  margin:0 0 1px 0;
+  background:#222;
+}
+
+.playlist .win {
+  /*border-bottom:1px solid #00FF00;*/
+  color:#5FCE0D;
+}
+
+.playlist .lose { 
+  /*border-bottom:1px solid #FF0000;*/
+  color:#DF562C;
+}
+
+/* BOXES */
 
 .box {
   padding:10px;  
