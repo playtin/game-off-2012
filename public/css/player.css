@@ -18,11 +18,17 @@ h3 {
   margin:0;
 }
 
+a, a:visited {
+  text-decoration: underline;
+  color:#CCC;
+}
+
+
+/* PLAYLIST */
+
 #endlessButton {
   margin:2em 0 0 8px;
 }
-
-/* PLAYLIST */
 
 .playlist {
   list-style-type: none;

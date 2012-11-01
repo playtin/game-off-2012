@@ -28,10 +28,6 @@ var isEndlessMode = function() {
 
 function randomGame(player) {
 
-  if(!isEndlessMode()) return false;
-
-  console.log("next game in 5 seconds");
-
   var random_index = Math.floor( Math.random() * (game_data.length - 1) );
   
   player.reset();
@@ -44,23 +40,28 @@ function randomGame(player) {
 
 };
 
+
 function player_main( data, game_id ) {
   
   game_id = game_id || 0;
 
   window.player = new Player();
 
-  function increaseCounter( _isWin ) {
+  function after_played( _isWin ) {
     
-    $.ajax({
+    /*    
+      $.ajax({
       url : '/games/' + game_id + '/played',
       data : { win : _isWin },
       type : 'PUT',
       success : function() {}
-    }); 
+    }); */
 
-    addToPlaylist(data.title, game_id, _isWin); // Todo -> has to be index of game_data
-    randomGame(window.player);
+    addToPlaylist(data.title, game_id, _isWin); // Todo -> game_id has to be the corresponding index of game_data
+
+    if(isEndlessMode()) {
+      randomGame(window.player);
+    }
 
   };  
   
@@ -81,8 +82,8 @@ function player_main( data, game_id ) {
     
     if ( game_id ) {
       
-      player.onWin = function() { increaseCounter( true ); };
-      player.onLose = function() { increaseCounter( false ); };
+      player.onWin = function() { after_played( true ); };
+      player.onLose = function() { after_played( false ); };
       
     }
     
@@ -115,5 +116,5 @@ function addToPlaylist(_title, _id, _isWin) {
   titleEle.addClass(statusClass);
 
   ul.prepend(newLi);
-  newLi.show(800);
+  newLi.fadeIn(500);
 };
