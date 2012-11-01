@@ -40,7 +40,19 @@
 
 <div class="container">
 
-<h1><img src="images/logo_red.png"></h1>
+<header>
+  <div class="row">
+
+    <div class="span6">    
+      <h1><img src="images/logo_red.png"></h1>
+    </div>
+
+    <div class="span3">    
+      <button class="btn btn-inverse" id="endlessButton">Endless mode is off</button>
+    </div>
+
+  </div>
+</header>
 
 <div class="row">
 
@@ -117,7 +129,7 @@
 <script>
   $(document).ready( function() {
 
-    player_main( game_data[0].data, game_data[0].id );
+    player_main( game_data[1].data, game_data[1].id );
 
   });
 </script>
