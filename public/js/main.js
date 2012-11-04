@@ -1,10 +1,9 @@
-$(document).ready(function() {
-
-  // Toggle endless mode
+function player_main() {
+  
   $("#endlessButton").click(function() {
 
-    var btn = $(this);
-    var activeClass = "btn-danger";
+    var btn = $(this),
+      activeClass = "btn-danger";
 
     btn.toggleClass(activeClass).toggleClass("btn-inverse");
 
@@ -15,91 +14,56 @@ $(document).ready(function() {
     }
 
   });
-
-});
-
-
-var isEndlessMode = function() {
-
-  return $("#endlessButton").hasClass("btn-danger");
-
-};
-
-
-function randomGame(player) {
-
-  var random_index = Math.floor( Math.random() * (game_data.length - 1) );
   
-  player.reset();
-
-  // Show 5 Seconds countdown ...
-
-  setTimeout(function() {
-      player_main( game_data[random_index].data, game_data[random_index].id);
-  }, 5000);  
-
-};
-
-
-function player_main( data, game_id ) {
-  
-  game_id = game_id || 0;
-
   window.player = new Player();
-
-  function after_played( _isWin ) {
-    
-    /*    
-      $.ajax({
-      url : '/games/' + game_id + '/played',
-      data : { win : _isWin },
-      type : 'PUT',
-      success : function() {}
-    }); */
-
-    addToPlaylist(data.title, game_id, _isWin); // Todo -> game_id has to be the corresponding index of game_data
-
-    if(isEndlessMode()) {
-      randomGame(window.player);
-    }
-
-  };  
-  
-  console.log( JSON.stringify( data ) );
   
   if ( $( '#player' ) ) {
   
     player.init( $( '#player' ) );
     player.startRunloop();
     
-    // player.debug();
-  
-    if ( data ) {
-  
-      player.parse( data );
-
-    }
-    
-    if ( game_id ) {
-      
-      player.onWin = function() { after_played( true ); };
-      player.onLose = function() { after_played( false ); };
-      
-    }
+    play_game( game_data[0] );
     
   }
   
 };
 
-(function($){
-    $.fn.disableSelection = function() {
-        return this
-                 .attr('unselectable', 'on')
-                 .css('user-select', 'none')
-                 .on('selectstart', false);
-    };
-})(jQuery);
+function play_game( _game ) {
+  
+  player.parse( _game.data );
+  
+  player.onRestart = function( _isWin ) {
+    
+    /*
+    $.ajax({
+      url : '/games/' + game_id + '/played',
+      data : { win : _isWin },
+      type : 'PUT',
+      success : function() {}
+    });
+    */
+    
+    addToPlaylist( _game.data.title, _game.id, _isWin ); // Todo -> game_id has to be the corresponding index of game_data
+    
+    if ( isEndlessMode() ) {
+      
+      play_game( game_data[ randInt( 0, game_data.length ) ] )
+      
+      return false;
+      
+    }
+    
+    return true;
+    
+  }
+  
+};
 
+function isEndlessMode() {
+
+  return $("#endlessButton").hasClass("btn-danger");
+
+};
 
 function addToPlaylist(_title, _id, _isWin) {
 
@@ -117,4 +81,14 @@ function addToPlaylist(_title, _id, _isWin) {
 
   ul.prepend(newLi);
   newLi.fadeIn(500);
+  
 };
+
+(function($){
+    $.fn.disableSelection = function() {
+        return this
+                 .attr('unselectable', 'on')
+                 .css('user-select', 'none')
+                 .on('selectstart', false);
+    };
+})(jQuery);
