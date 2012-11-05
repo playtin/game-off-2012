@@ -68,6 +68,8 @@ function play_game( _index ) {
       success : function() {}
     });
     */
+
+    updateScore( _isWin );
     
     addToPlaylist( game.data.title, _index, _isWin );
     
@@ -112,6 +114,17 @@ function addToPlaylist( _title, _index, _isWin ) {
 
   ul.prepend( newLi );
   newLi.fadeIn( 500 );
+
+};
+
+function updateScore( _isWin ) {
+
+  var selector = _isWin ? "numberOfWin" : "numberOfLose";
+
+  var scoreObj = $("." + selector);
+  var newScore = parseInt(scoreObj.html()) + 1;
+
+  scoreObj.fadeOut(500).html(newScore).fadeIn(500); 
 
 };
 
