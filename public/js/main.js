@@ -1,7 +1,8 @@
 var player,
   gamePlayed = [0, 0, 0, 0, 0],
   gameOrder = [0, 1, 2, 3, 4 ],
-  gameIndex = 0;
+  gameIndex = 0,
+  messageAppeared = false;
 
 function player_main() {
   
@@ -14,6 +15,12 @@ function player_main() {
   $( "#navi li" ).click( playIndex );
   $( "#gameOverlay #games li" ).click( playIndex );
   $( ".playlist li" ).live( "click", playIndex );
+  
+  $( "#messageOverlay .confirm .btn" ).click( function() { 
+    
+    $( "#messageOverlay" ).hide();
+    
+  });
   
   player = new Player();
   
@@ -71,9 +78,10 @@ function play_game( _index ) {
     
     gamePlayed[ _index ] = 1;
     
-    if ( gamePlayed.every( function( e ) { return e === 1; } ) ) {
+    if ( !messageAppeared && gamePlayed.every( function( e ) { return e === 1; } ) ) {
       
       $( "#messageOverlay" ).show();
+      messageAppeared = true;
       
     }
     

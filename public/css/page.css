@@ -9,11 +9,6 @@ body {
 .right { float: right; }
 .clear { clear: both; }
 
-a, a:visited {
-  text-decoration: underline;
-  color:#CCC;
-}
-
 .hr {
   margin: 15px 0;
   width: 100%;
@@ -74,6 +69,11 @@ header h3 {
   display:none;
 }
 
+#player #messageOverlay .confirm {
+  margin: 0 auto;
+  width: 200px;
+}
+
 /* PLAYLIST */
 .playlist {
   list-style-type: none;
@@ -104,6 +104,11 @@ header h3 {
 .box {
   padding:10px;  
   color:#F6F6F6;
+}
+
+.box a, .box a:visited {
+  text-decoration: underline;
+  color:#CCC;
 }
 
 .boxViolette { background:#663FC0; }
