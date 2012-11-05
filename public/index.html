@@ -62,6 +62,8 @@
   </div>
 </header>
 
+<div class="hr"></div>
+
 <ul class="row-fluid" id="navi">
   <li data-index="0" class="btn span2">push</li>
   <li data-index="1" class="btn span2">pull</li>
@@ -71,13 +73,15 @@
   <li data-index="5" class="btn btn-danger span2">play all</li>
 </ul>
 
+<div class="hr"></div>
+
 <div class="row-fluid">
 
   <div class="span9">
 
     <div id="player">
       
-      <div id="overlay">
+      <div class="overlay" id="gameOverlay">
         
         <h3>Choose a game!</h3>
         
@@ -87,8 +91,16 @@
           <li data-index="2" class="btn">merge</li>
           <li data-index="3" class="btn">branch</li>
           <li data-index="4" class="btn">fork</li>
-          <li data-index="5" class="btn btn-danger">playall</li>
+          <li data-index="5" class="btn btn-danger">play all</li>
         </ul>
+        
+      </div>
+      
+      <div class="overlay" id="messageOverlay">
+        
+        <h3>Thanks for playing the whole collection.<br /> We hope you had fun!</h3>
+        
+        <h3>Want more?</h3>
         
       </div>
       

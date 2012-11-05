@@ -27,7 +27,7 @@ var Player = function() {
       { name : 'init' },
       { name : 'load', enter : this.enterLoad, draw : this.drawLoad, exit : this.exitLoad },
       
-      { name : 'ready' },
+      { name : 'ready', enter : this.enterReady },
       
       { name : 'play', enter : this.enterPlay, draw : this.draw, update : this.update, exit : this.exitPlay },
       { name : 'end', draw : this.draw, update : this.update },
@@ -266,8 +266,14 @@ Player.prototype = {
   
   enterLoad : function() {
     
-    $( '.playerUI', this.node ).show();
-    $( '.loadScreen', this.node ).show();
+    var node = this.node;
+    
+    $( '.playerUI', node ).show();
+    $( '.loadScreen', node ).show();
+    
+    $( '.titleScreen', node ).hide();
+    $( '.playButton', node ).hide();
+    $( '.titleBar', node ).removeClass( 'interactive' );
     
   },
   
@@ -279,7 +285,9 @@ Player.prototype = {
     
   },
   
-  onReady : function() {
+  enterReady : function() {
+    
+    var node = this.node;
     
     $( '.titleScreen', node ).show();
     
@@ -292,12 +300,14 @@ Player.prototype = {
       
     });
     
+  },
+  
+  onReady : function() {
+    
     this.reset();
     this.game.reset();
     
     this.draw( this.ctx );
-    
-    var node = this.node;
     
   },
   
@@ -347,11 +357,13 @@ Player.prototype = {
     if ( this.game.isWon ) {
       
       msg = '.winScreen';
+      
       this.onWin();
       
     } else {
       
       msg = '.loseScreen';
+      
       this.onLose();
       
     }

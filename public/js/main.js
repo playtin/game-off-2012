@@ -1,25 +1,24 @@
+var player,
+  gamePlayed = [0, 0, 0, 0, 0],
+  gameOrder = [0, 1, 2, 3, 4 ],
+  gameIndex = 0;
+
 function player_main() {
   
-  $( "#navi li" ).click( function() {
+  function playIndex() {
     
     play_game( $( this ).data( "index" ) );
-    
-  });
-  
-  $( "#overlay #games li" ).click( function() {
-    
-    play_game( $( this ).data( "index" ) );
-    
-  });
-  
-  window.player = new Player();
-  
-  if ( $( '#player' ) ) {
-  
-    player.init( $( '#player' ) );
-    player.startRunloop();
     
   }
+  
+  $( "#navi li" ).click( playIndex );
+  $( "#gameOverlay #games li" ).click( playIndex );
+  $( ".playlist li" ).live( "click", playIndex );
+  
+  player = new Player();
+  
+  player.init( $( '#player' ) );
+  player.startRunloop();
   
 };
 
@@ -28,11 +27,19 @@ function play_game( _index ) {
   $( "#navi li" ).removeClass( "active" );
   $( "#navi li:nth-child(" + ( _index + 1 ) + ")" ).addClass( "active" );
   
-  $( "#overlay" ).hide();
+  $( "#gameOverlay" ).hide();
+  $( "#messageOverlay" ).hide();
   
   if ( _index === 5 ) {
     
-    _index = randInt( 0, 5 );
+    if ( gameIndex === 0 ) {
+      
+      gameOrder.shuffle();
+      
+    }
+    
+    _index = gameOrder[ gameIndex ];
+    gameIndex = ( gameIndex + 1 ) % 5;
     
   }
   
@@ -54,17 +61,23 @@ function play_game( _index ) {
     });
     */
     
-    addToPlaylist( game.data.title, game.id, _isWin ); // Todo -> game_id has to be the corresponding index of game_data
+    addToPlaylist( game.data.title, _index, _isWin );
     
     if ( isEndlessMode() ) {
       
       play_game( 5 );
       
-      return false;
+    }
+    
+    gamePlayed[ _index ] = 1;
+    
+    if ( gamePlayed.every( function( e ) { return e === 1; } ) ) {
+      
+      $( "#messageOverlay" ).show();
       
     }
     
-    return true;
+    return !isEndlessMode();
     
   }
   
@@ -76,23 +89,21 @@ function isEndlessMode() {
 
 };
 
-function addToPlaylist(_title, _id, _isWin) {
+function addToPlaylist( _title, _index, _isWin ) {
 
-  var ul = $('.playlist');
-  var template = ul.find('.template');
+  var ul = $('.playlist'),
+    newLi = ul.find('.template').clone();
 
-  var newLi = template.clone().removeClass("template").hide();
-  newLi.attr("data-id", _id);
+  newLi.removeClass( "template" ).hide();
+  newLi.data( "index", _index );
 
-  var titleEle = newLi.find(".title");
-  titleEle.html(_title);
+  var titleEle = newLi.find( ".title" );
+  titleEle.html( _title );
+  titleEle.addClass( _isWin ? "win" : "lose" );
 
-  var statusClass = _isWin ? "win" : "lose";
-  titleEle.addClass(statusClass);
+  ul.prepend( newLi );
+  newLi.fadeIn( 500 );
 
-  ul.prepend(newLi);
-  newLi.fadeIn(500);
-  
 };
 
 (function($){

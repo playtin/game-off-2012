@@ -2,7 +2,7 @@ body {
   background: url('../images/bg.png');  
   font-family: 'Droid Sans', sans-serif;
   font-size:0.8em;
-  margin:4em 0 4em 0;
+  margin: 1.5em 0 4em 0;
 }
 
 .left { float: left; }
@@ -14,12 +14,14 @@ a, a:visited {
   color:#CCC;
 }
 
-/* HEADER */
-
-header {
-  margin:0em 0 0.5em 0;
-  overflow: hidden;
+.hr {
+  margin: 15px 0;
+  width: 100%;
+  height: 1px;
+  background: #DEDEDE;
 }
+
+/* HEADER */
 
 header h1 {
   margin:0; 
@@ -28,17 +30,17 @@ header h1 {
 
 header h3 {
   text-align: right;
+  margin: 15px 0 0;
 }
 
 /* NAVIGATION */
 #navi {
-  margin: 0 0 20px;
+  margin: 0;
 }
-#navi div {}
 
-/* OVERLAY */
+/* OVERLAYS */
 
-#player #overlay {
+#player .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -48,29 +50,31 @@ header h3 {
   background-color: white;
 }
 
-#player #overlay h3 {
-  margin: 50px 93px 20px;
+#player .overlay h3 {
+  width: 640px;
+  text-align: center;
+  margin: 50px 0 20px;
 }
 
-#player #overlay #games {
+#player #gameOverlay #games {
   margin: 10px 83px;
   list-style-type: none;
 }
 
-#player #overlay #games li {
+#player #gameOverlay #games li {
   width: 105px;
   height: 65px;
   margin: 10px;
   float: left;
   line-height: 64px;
+  font-size: 18pt;
+}
+
+#player #messageOverlay {
+  display:none;
 }
 
 /* PLAYLIST */
-#endlessButton {
-  float: right;
-  margin-bottom: 20px;
-}
-
 .playlist {
   list-style-type: none;
   margin:1em 0; padding:0;
@@ -85,6 +89,7 @@ header h3 {
   background:#222;
   height:auto;
   min-height: auto;
+  cursor: pointer;
 }
 
 .playlist .win {  
