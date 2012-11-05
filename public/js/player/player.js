@@ -27,7 +27,7 @@ var Player = function() {
       { name : 'init' },
       { name : 'load', enter : this.enterLoad, draw : this.drawLoad, exit : this.exitLoad },
       
-      { name : 'ready', enter : this.enterReady, exit : this.exitReady },
+      { name : 'ready', enter : this.enterReady },
       
       { name : 'play', enter : this.enterPlay, draw : this.draw, update : this.update, exit : this.exitPlay },
       { name : 'end', draw : this.draw, update : this.update },
@@ -105,26 +105,6 @@ Player.prototype = {
     });
     
     $('#player').addTouch();
-    
-    function animateBar( val ) {
-      
-      if ( $( '.titleBar' ).css( 'top' ) !== val + 'px' && self.fsm.hasState( 'ready' ) ) {
-      
-        $( '.titleBar' ).animate( {top: val}, 500 );
-        
-      }
-      
-    };
-    
-    $( '.titleBar', _node ).hover( function() {
-      
-      animateBar( 220 );
-      
-    }, function() {
-      
-      animateBar( 330 );
-      
-    });
     
     this.node = _node;
     
@@ -286,8 +266,14 @@ Player.prototype = {
   
   enterLoad : function() {
     
-    $( '.playerUI', this.node ).show();
-    $( '.loadScreen', this.node ).show();
+    var node = this.node;
+    
+    $( '.playerUI', node ).show();
+    $( '.loadScreen', node ).show();
+    
+    $( '.titleScreen', node ).hide();
+    $( '.playButton', node ).hide();
+    $( '.titleBar', node ).removeClass( 'interactive' );
     
   },
   
@@ -310,24 +296,8 @@ Player.prototype = {
       
       $( '.endBg', node ).animate( {opacity: 0}, 500 );
       $( '.playButton', node ).fadeIn( 300 );
-      $( '.titleBar', node ).animate( {top: 330}, 500 );
+      $( '.titleBar', node ).addClass( 'interactive' );
       
-    });
-    
-  },
-  
-  exitReady : function() {
-    
-    var node = this.node;
-    
-    $( '.playButton', node ).fadeOut( 200 );
-    
-    $( '.titleBar', node ).animate( {top: 390}, 200, function() {
-    
-      $( '.playerUI', node ).hide();
-      $( '.titleScreen', node ).hide();
-      $( '.titleBar', node ).css( {top: 390} );
-    
     });
     
   },
@@ -342,6 +312,18 @@ Player.prototype = {
   },
   
   onStart : function() {
+    
+    var node = this.node;
+    
+    $( '.playButton', node ).fadeOut( 200 );
+    $( '.titleBar', node ).removeClass( 'interactive' );
+    
+    setTimeout( function() {
+    
+      $( '.playerUI', node ).hide();
+      $( '.titleScreen', node ).hide();
+    
+    }, 200);
     
     this.reset();
     

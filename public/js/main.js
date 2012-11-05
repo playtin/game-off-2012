@@ -1,36 +1,62 @@
+var player,
+  gamePlayed = [0, 0, 0, 0, 0],
+  gameOrder = [0, 1, 2, 3, 4 ],
+  gameIndex = 0,
+  messageAppeared = false;
+
 function player_main() {
   
-  $("#endlessButton").click(function() {
-
-    var btn = $(this),
-      activeClass = "btn-danger";
-
-    btn.toggleClass(activeClass).toggleClass("btn-inverse");
-
-    if( btn.hasClass(activeClass) ) {
-      btn.html("Endless mode is on");
-    } else {
-      btn.html("Endless mode is off");
-    }
-
-  });
-  
-  window.player = new Player();
-  
-  if ( $( '#player' ) ) {
-  
-    player.init( $( '#player' ) );
-    player.startRunloop();
+  function playIndex() {
     
-    play_game( game_data[0] );
+    play_game( $( this ).data( "index" ) );
     
   }
   
+  $( "#navi li" ).click( playIndex );
+  $( "#gameOverlay #games li" ).click( playIndex );
+  $( ".playlist li" ).live( "click", playIndex );
+  
+  $( "#messageOverlay .confirm .btn" ).click( function() { 
+    
+    $( "#messageOverlay" ).hide();
+    
+  });
+  
+  player = new Player();
+  
+  player.init( $( '#player' ) );
+  player.startRunloop();
+  
 };
 
-function play_game( _game ) {
+function play_game( _index ) {
   
-  player.parse( _game.data );
+  $( "#navi li" ).removeClass( "active" );
+  $( "#navi li:nth-child(" + ( _index + 1 ) + ")" ).addClass( "active" );
+  
+  $( "#gameOverlay" ).hide();
+  $( "#messageOverlay" ).hide();
+  
+  if ( _index === 5 ) {
+    
+    if ( gameIndex === 0 ) {
+      
+      gameOrder.shuffle();
+      
+    }
+    
+    _index = gameOrder[ gameIndex ];
+    gameIndex = ( gameIndex + 1 ) % 5;
+    
+  }
+  
+  var game = game_data[ _index ];
+  
+  $( "#player .title" ).text( game.data.title );
+  $( "#player .instruction" ).text( game.data.instructions );
+  $( "#player .playerBar a").attr( "href", "http://www.playtin.com/play/" + game.id );
+  
+  player.parse( game.data );
   
   player.onRestart = function( _isWin ) {
     
@@ -43,17 +69,24 @@ function play_game( _game ) {
     });
     */
     
-    addToPlaylist( _game.data.title, _game.id, _isWin ); // Todo -> game_id has to be the corresponding index of game_data
+    addToPlaylist( game.data.title, _index, _isWin );
     
     if ( isEndlessMode() ) {
       
-      play_game( game_data[ randInt( 0, game_data.length ) ] )
-      
-      return false;
+      play_game( 5 );
       
     }
     
-    return true;
+    gamePlayed[ _index ] = 1;
+    
+    if ( !messageAppeared && gamePlayed.every( function( e ) { return e === 1; } ) ) {
+      
+      $( "#messageOverlay" ).show();
+      messageAppeared = true;
+      
+    }
+    
+    return !isEndlessMode();
     
   }
   
@@ -61,27 +94,25 @@ function play_game( _game ) {
 
 function isEndlessMode() {
 
-  return $("#endlessButton").hasClass("btn-danger");
+  return $( "#navi li:nth-child(6)" ).hasClass( "active" );
 
 };
 
-function addToPlaylist(_title, _id, _isWin) {
+function addToPlaylist( _title, _index, _isWin ) {
 
-  var ul = $('.playlist');
-  var template = ul.find('.template');
+  var ul = $('.playlist'),
+    newLi = ul.find('.template').clone();
 
-  var newLi = template.clone().removeClass("template").hide();
-  newLi.attr("data-id", _id);
+  newLi.removeClass( "template" ).hide();
+  newLi.data( "index", _index );
 
-  var titleEle = newLi.find(".title");
-  titleEle.html(_title);
+  var titleEle = newLi.find( ".title" );
+  titleEle.html( _title );
+  titleEle.addClass( _isWin ? "win" : "lose" );
 
-  var statusClass = _isWin ? "win" : "lose";
-  titleEle.addClass(statusClass);
+  ul.prepend( newLi );
+  newLi.fadeIn( 500 );
 
-  ul.prepend(newLi);
-  newLi.fadeIn(500);
-  
 };
 
 (function($){

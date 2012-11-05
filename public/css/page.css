@@ -1,0 +1,129 @@
+body {
+  background: url('../images/bg.png');  
+  font-family: 'Droid Sans', sans-serif;
+  font-size:0.8em;
+  margin: 1.5em 0 4em 0;
+}
+
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+
+.hr {
+  margin: 15px 0;
+  width: 100%;
+  height: 1px;
+  background: #DEDEDE;
+}
+
+/* HEADER */
+
+header h1 {
+  margin:0; 
+  color:#CD5654;
+}
+
+header h3 {
+  text-align: right;
+  margin: 15px 0 0;
+}
+
+/* NAVIGATION */
+#navi {
+  margin: 0;
+}
+
+/* OVERLAYS */
+
+#player .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 640px;
+  height: 390px;
+  background-color: white;
+}
+
+#player .overlay h3 {
+  width: 640px;
+  text-align: center;
+  margin: 50px 0 20px;
+}
+
+#player #gameOverlay #games {
+  margin: 10px 83px;
+  list-style-type: none;
+}
+
+#player #gameOverlay #games li {
+  width: 105px;
+  height: 65px;
+  margin: 10px;
+  float: left;
+  line-height: 64px;
+  font-size: 18pt;
+}
+
+#player #messageOverlay {
+  display:none;
+}
+
+#player #messageOverlay .confirm {
+  margin: 0 auto;
+  width: 200px;
+}
+
+/* PLAYLIST */
+.playlist {
+  list-style-type: none;
+  margin:1em 0; padding:0;
+}
+
+.playlist .template {
+  display: none;
+}
+
+.playlist .box {
+  margin:0 0 1px 0;
+  background:#222;
+  height:auto;
+  min-height: auto;
+  cursor: pointer;
+}
+
+.playlist .win {  
+  color:#5FCE0D;
+}
+
+.playlist .lose { 
+  color:#DF562C;
+}
+
+/* BOXES */
+.box {
+  padding:10px;  
+  color:#F6F6F6;
+}
+
+.box a, .box a:visited {
+  text-decoration: underline;
+  color:#CCC;
+}
+
+.boxViolette { background:#663FC0; }
+.boxBlue { background: #2F8CF3; }
+.boxRed { background: #DF562C; }
+.boxGreen { background: #5FCE0D; }
+
+#infoboxes {  
+  margin-top: 4em;
+}
+
+#infoboxes .span3 {
+  width:200px;
+}
+
+#infoboxes .box {
+  min-height:120px;
+}
