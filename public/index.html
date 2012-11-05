@@ -49,22 +49,49 @@
 <header>
   <div class="row">
 
-    <div class="span6">    
-      <h1><a href="http://www.playtin.com" target="_blank"><img src="images/logo_red.png" alt="Playtin"></a></h1>
-    </div>
-
-    <div class="span3">    
-      <button class="btn btn-inverse" id="endlessButton">Endless mode is off</button>
-    </div>
+    <h1 class="span3">
+      <a href="http://www.playtin.com" target="_blank">
+        <img src="images/logo_red.png" alt="Playtin">
+      </a>
+    </h1>
+    
+    <h3 class="span5 offset4">
+      Game-Off collection
+    </h3>
 
   </div>
 </header>
 
-<div class="row">
+<ul class="row-fluid" id="navi">
+  <li data-index="0" class="btn span2">push</li>
+  <li data-index="1" class="btn span2">pull</li>
+  <li data-index="2" class="btn span2">merge</li>
+  <li data-index="3" class="btn span2">branch</li>
+  <li data-index="4" class="btn span2">fork</li>
+  <li data-index="5" class="btn btn-danger span2">play all</li>
+</ul>
 
-  <div class="span9">    
+<div class="row-fluid">
+
+  <div class="span9">
 
     <div id="player">
+      
+      <div id="overlay">
+        
+        <h3>Choose a game!</h3>
+        
+        <ul id="games">
+          <li data-index="0" class="btn">push</li>
+          <li data-index="1" class="btn">pull</li>
+          <li data-index="2" class="btn">merge</li>
+          <li data-index="3" class="btn">branch</li>
+          <li data-index="4" class="btn">fork</li>
+          <li data-index="5" class="btn btn-danger">playall</li>
+        </ul>
+        
+      </div>
+      
       <canvas id="playerCanvas" width="640" height="390"></canvas>
       
       <div class="playerUI">
@@ -80,11 +107,10 @@
           <div class="titleBar">
             <div class="titleBg"></div>
             <div class="titleText">
-              <strong>Oktoberfest Dirndl</strong>
-              <span>by Zeus</span>
+              <strong class="title"></strong>
               <i class="icon-chevron-up icon-white"></i>
               <h2>Instructions</h2>
-              <div class="instruction">Click on the dirndl if the bavarians are ordering new beer</div>
+              <div class="instruction"></div>
             </div>
           </div>
         </div>
@@ -108,8 +134,7 @@
 
   <div class="span3">
 
-
-    <div class="box boxBlue">
+    <div class="box boxBlue clear">
       <h4>Instructions</h4>
       <p>Use your mouse to play the games and read their instructions, so you know what has to be done.</p>
     </div>
@@ -120,7 +145,7 @@
         Played: <span class="title"></span>
       </li>
 
-    </ul>    
+    </ul>
 
   </div>
 

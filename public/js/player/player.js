@@ -27,7 +27,7 @@ var Player = function() {
       { name : 'init' },
       { name : 'load', enter : this.enterLoad, draw : this.drawLoad, exit : this.exitLoad },
       
-      { name : 'ready', enter : this.enterReady, exit : this.exitReady },
+      { name : 'ready' },
       
       { name : 'play', enter : this.enterPlay, draw : this.draw, update : this.update, exit : this.exitPlay },
       { name : 'end', draw : this.draw, update : this.update },
@@ -105,26 +105,6 @@ Player.prototype = {
     });
     
     $('#player').addTouch();
-    
-    function animateBar( val ) {
-      
-      if ( $( '.titleBar' ).css( 'top' ) !== val + 'px' && self.fsm.hasState( 'ready' ) ) {
-        
-        $( '.titleBar' ).animate( {top: val}, 500 );
-        
-      }
-      
-    };
-    
-    $( '.titleBar', _node ).hover( function() {
-      
-      animateBar( 220 );
-      
-    }, function() {
-      
-      animateBar( 330 );
-      
-    });
     
     this.node = _node;
     
@@ -299,9 +279,7 @@ Player.prototype = {
     
   },
   
-  enterReady : function() {
-    
-    var node = this.node;
+  onReady : function() {
     
     $( '.titleScreen', node ).show();
     
@@ -310,38 +288,32 @@ Player.prototype = {
       
       $( '.endBg', node ).animate( {opacity: 0}, 500 );
       $( '.playButton', node ).fadeIn( 300 );
-      $( '.titleBar', node ).animate( {top: 330}, 500 );
+      $( '.titleBar', node ).addClass( 'interactive' );
       
     });
-    
-  },
-  
-  exitReady : function() {
-    
-    var node = this.node;
-    
-    $( '.playButton', node ).fadeOut( 200 );
-    
-    $( '.titleBar', node ).animate( {top: 390}, 200, function() {
-    
-      $( '.playerUI', node ).hide();
-      $( '.titleScreen', node ).hide();
-      $( '.titleBar', node ).css( {top: 390} );
-    
-    });
-    
-  },
-  
-  onReady : function() {
     
     this.reset();
     this.game.reset();
     
     this.draw( this.ctx );
     
+    var node = this.node;
+    
   },
   
   onStart : function() {
+    
+    var node = this.node;
+    
+    $( '.playButton', node ).fadeOut( 200 );
+    $( '.titleBar', node ).removeClass( 'interactive' );
+    
+    setTimeout( function() {
+    
+      $( '.playerUI', node ).hide();
+      $( '.titleScreen', node ).hide();
+    
+    }, 200);
     
     this.reset();
     
@@ -375,13 +347,11 @@ Player.prototype = {
     if ( this.game.isWon ) {
       
       msg = '.winScreen';
-      
       this.onWin();
       
     } else {
       
       msg = '.loseScreen';
-      
       this.onLose();
       
     }

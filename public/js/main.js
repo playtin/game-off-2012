@@ -1,18 +1,15 @@
 function player_main() {
   
-  $("#endlessButton").click(function() {
-
-    var btn = $(this),
-      activeClass = "btn-danger";
-
-    btn.toggleClass(activeClass).toggleClass("btn-inverse");
-
-    if( btn.hasClass(activeClass) ) {
-      btn.html("Endless mode is on");
-    } else {
-      btn.html("Endless mode is off");
-    }
-
+  $( "#navi li" ).click( function() {
+    
+    play_game( $( this ).data( "index" ) );
+    
+  });
+  
+  $( "#overlay #games li" ).click( function() {
+    
+    play_game( $( this ).data( "index" ) );
+    
   });
   
   window.player = new Player();
@@ -22,15 +19,29 @@ function player_main() {
     player.init( $( '#player' ) );
     player.startRunloop();
     
-    play_game( game_data[0] );
-    
   }
   
 };
 
-function play_game( _game ) {
+function play_game( _index ) {
   
-  player.parse( _game.data );
+  $( "#navi li" ).removeClass( "active" );
+  $( "#navi li:nth-child(" + ( _index + 1 ) + ")" ).addClass( "active" );
+  
+  $( "#overlay" ).hide();
+  
+  if ( _index === 5 ) {
+    
+    _index = randInt( 0, 5 );
+    
+  }
+  
+  var game = game_data[ _index ];
+  
+  $( "#player .title" ).text( game.data.title );
+  $( "#player .instruction" ).text( game.data.instructions );
+  
+  player.parse( game.data );
   
   player.onRestart = function( _isWin ) {
     
@@ -43,11 +54,11 @@ function play_game( _game ) {
     });
     */
     
-    addToPlaylist( _game.data.title, _game.id, _isWin ); // Todo -> game_id has to be the corresponding index of game_data
+    addToPlaylist( game.data.title, game.id, _isWin ); // Todo -> game_id has to be the corresponding index of game_data
     
     if ( isEndlessMode() ) {
       
-      play_game( game_data[ randInt( 0, game_data.length ) ] )
+      play_game( 5 );
       
       return false;
       
@@ -61,7 +72,7 @@ function play_game( _game ) {
 
 function isEndlessMode() {
 
-  return $("#endlessButton").hasClass("btn-danger");
+  return $( "#navi li:nth-child(6)" ).hasClass( "active" );
 
 };
 
