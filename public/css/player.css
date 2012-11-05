@@ -1,10 +1,3 @@
-body {
-  background: #111 url(../images/broken_noise.png);  
-  font-family: 'Droid Sans', sans-serif;
-  font-size:0.8em;
-  margin:4em 0 4em 0;
-}
-
 /* line 25, ../../app/assets/stylesheets/player.css.scss */
 #player {
   font-family: 'Helvetica Neue Bold', 'Helvetica', 'Arial', sans-serif;
@@ -23,15 +16,6 @@ body {
 #player #playerCanvas {
   display: block;
   background: white;
-}
-
-
-h3 {
-  color:#FFF;
-}
-
-header {
-  margin:0em 0 0.5em 0;
 }
 
 /* line 43, ../../app/assets/stylesheets/player.css.scss */
