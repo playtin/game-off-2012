@@ -54,6 +54,7 @@ function play_game( _index ) {
   
   $( "#player .title" ).text( game.data.title );
   $( "#player .instruction" ).text( game.data.instructions );
+  $( "#player .playerBar a").attr( "href", "http://www.playtin.com/play/" + game.id );
   
   player.parse( game.data );
   
