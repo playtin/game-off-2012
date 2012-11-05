@@ -115,6 +115,20 @@ function addToPlaylist( _title, _index, _isWin ) {
   ul.prepend( newLi );
   newLi.fadeIn( 500 );
 
+  // Remove last element if there are more than 5
+  var items = ul.find(".box").not(".template");
+  if(items.length > 5) {    
+
+    var lastEle = items.last();
+
+    lastEle.fadeOut(500, function() {
+
+      lastEle.remove();
+
+    });
+
+  }
+
 };
 
 function updateScore( _isWin ) {
