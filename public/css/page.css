@@ -57,6 +57,17 @@ header h3 {
   margin: 0;
 }
 
+/* COLUMNS */
+#colLeft {
+  width: 666px;
+  width: 680px;
+}
+
+#colRight {
+  width: 254px;
+  width: 240px;
+}
+
 /* OVERLAYS */
 
 #player .overlay {
@@ -99,21 +110,42 @@ header h3 {
 }
 
 /* PLAYLIST */
-.playlist {
+.played {
+  padding: 20px;
+}
+
+.played .score {
+  text-align: center;
+  font-size: 48px;
+  line-height: 35px;
+  padding: 6px 0 10px;
+}
+
+ul.playlist {
   list-style-type: none;
-  margin:1em 0; padding:0;
+  padding: 0;
+  margin: 0;
 }
 
-.playlist .template {
-  display: none;
-}
-
-.playlist .box {  
-  margin: 0 0 1px 0;
-  background: #222;
-  height: auto;
-  min-height: auto;
+ul.playlist li {  
+  margin-top: 10px;
   cursor: pointer;
+  padding: 10px 20px;
+  background: #EEE;
+  border: 1px solid #CCC;
+}
+
+ul.playlist li .title {
+  font-size: 20px;
+}
+
+ul.playlist li .time {
+  float: right;
+  color: #424755;
+}
+
+ul.playlist li.template {
+  display: none;
 }
 
 /* BOXES */
@@ -138,17 +170,5 @@ header h3 {
 }
 
 #infoboxes .span3 {
-  width: 200px;
-}
-
-#infoboxes .box {
-  min-height: 180px;
-}
-
-.score {
-  background:#222;
-  padding:10px;
-  color:#FFF;
-  margin:10px 0 0 0;
-  text-align: center; font-size: 1.8em;
+  width: 203px;
 }

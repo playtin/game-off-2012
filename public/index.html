@@ -81,7 +81,7 @@
 
 <div class="row-fluid">
 
-  <div class="span9">
+  <div class="span9" id="colLeft">
 
     <div id="player">
       
@@ -151,44 +151,18 @@
       </div>
     </div>
 
-  </div>
-
-  <div class="span3">
-
-    <div class="score">
-      <span class="numberOfWin win">0</span> : <span class="numberOfLose lose">0</span>
-    </div>
-
-    <ul class="playlist">
-
-      <li class="box template">
-        Played: <span class="title"></span>
-      </li>
-
-    </ul>
-
-  </div>
-
-</div>
-
-  <div class="row" id="infoboxes">
-
-    <div class="span3">
-      <div class="box blue">
-        
+    <div class="row-fluid" id="infoboxes">
+      <div class="span3 box green">
         <div class="image">
           <img src="images/play_button.png" style="height:55px;" alt="Play">
         </div>
-        
+
         <h4>Instructions</h4>
         <p>All games are played with mouse clicks. Each game then has it's own instructions.<br />
           Pick a game and play!</p>
       </div>
-    </div>
 
-    <div class="span3">
-      <div class="box gray">
-
+      <div class="span3 box gray">
         <div class="image">
           <a href="https://github.com/blog/1303-github-game-off">
             <img src="images/github_logo.png" alt="Github game off">
@@ -196,24 +170,36 @@
         </div>
 
         <h4>About</h4>
-        
         <p>This game collection, made with the <a href="http://www.playtin.com">Playtin</a> microgame editor, is a submission to the <a href="https://github.com/blog/1303-github-game-off">Gihub Game Off</a> challenge.</p>
       </div>
-    </div>
-    
-    <div class="span3">
-      <div class="box red">
 
+      <div class="span3 box red">
         <div class="image">
           <a href="http://www.playtin.com/">
             <img src="images/playtin_logo.png" alt="Playtin" style="height:55px;">
           </a>
         </div>
-        
+
         <h4>Create your own!</h4>
         <p><a href="http://www.playtin.com">Playtin</a> lets you paint, create and publish your own ideas as microgames. Visit our <a href="http://www.playtin.com/gallery">gallery</a> to play a lot more games.</p>
       </div>
     </div>
+
+  </div>
+
+  <div class="span3 well played" id="colRight">
+
+    <div class="score">
+      <span class="winCount win">0</span> : <span class="loseCount lose">0</span>
+    </div>
+    
+    <ul class="playlist">
+      <li class="box template">
+        <span class="title">title</span>
+        <span class="time"></span>
+      </li>
+    </ul>
+
   </div>
 
 </div>
@@ -226,5 +212,6 @@
 
   });
 </script>
+
 </body>
 </html>

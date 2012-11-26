@@ -6,6 +6,14 @@ var player,
 
 function player_main() {
   
+  // var names = ['push', 'pull', 'clone', 'branch', 'fork'];
+  // 
+  // for (var i = 0; i < 10; i++) {
+  //   
+  //   addToPlaylist( names[i % 5], i % 5, Math.random() > 0.5, Math.random() * 10 );
+  //   
+  // }
+  
   function playIndex() {
     
     play_game( $( this ).data( "index" ) );
@@ -68,10 +76,8 @@ function play_game( _index ) {
       success : function() {}
     });
     */
-
-    updateScore( _isWin );
     
-    addToPlaylist( game.data.title, _index, _isWin );
+    addToPlaylist( game.data.title, _index, _isWin, player.timePlayed / 1000 );
     
     if ( isEndlessMode() ) {
       
@@ -100,45 +106,34 @@ function isEndlessMode() {
 
 };
 
-function addToPlaylist( _title, _index, _isWin ) {
+function addToPlaylist( _title, _index, _isWin, _time ) {
 
   var ul = $('.playlist'),
-    newLi = ul.find('.template').clone();
+    li = ul.find('.template').clone();
 
-  newLi.removeClass( "template" ).hide();
-  newLi.data( "index", _index );
+  li.removeClass( "template" );
+  li.data( "index", _index );
 
-  var titleEle = newLi.find( ".title" );
-  titleEle.html( _title );
-  titleEle.addClass( _isWin ? "win" : "lose" );
-
-  ul.prepend( newLi );
-  newLi.fadeIn( 500 );
-
-  // Remove last element if there are more than 5
-  var items = ul.find(".box").not(".template");
-  if(items.length > 5) {
-
-    var lastEle = items.last();
-
-    lastEle.fadeOut(500, function() {
-
-      lastEle.remove();
-
-    });
-
+  li.find( ".title" ).text( _title ).addClass( _isWin ? "win" : "lose" );
+  
+  if ( _isWin ) {
+  
+    li.find( ".time" ).text( _time.toFixed( 1 ) + 's' );
+  
   }
+  
+  ul.prepend( li );
+  li.hide().fadeIn( 500 );
+  
+  updateScore( _isWin );
 
 };
 
 function updateScore( _isWin ) {
 
-  var selector = _isWin ? "numberOfWin" : "numberOfLose";
+  var scoreNode = $("." + ( _isWin ? "winCount" : "loseCount" ) );
 
-  var scoreObj = $("." + selector);
-  var newScore = parseInt(scoreObj.html()) + 1;
-
-  scoreObj.fadeOut(500).html(newScore).fadeIn(500); 
+  scoreNode.text( parseInt( scoreNode.html() ) + 1 ); 
 
 };
 
