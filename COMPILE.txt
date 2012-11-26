@@ -1,0 +1,39 @@
+// insert this script at: http://closure-compiler.appspot.com/home
+
+// ==ClosureCompiler==
+
+// @compilation_level SIMPLE_OPTIMIZATIONS
+
+// @output_file_name min.js
+
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/data/game_data.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/lib/requestAnimationFrame.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/lib/jquery-1.8.2.min.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/lib/jquery.ui.ipad.altfix.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/lib/Tau.js
+
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/utilities.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/vector.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/area.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/circle.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/path.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/utilities/state_machine.js
+
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/action.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/animation.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/behaviour.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/game.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/game_object.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/graphic.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/mouse.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/movement.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/trigger.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/shape.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/player.js
+
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/parser/loader.js
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/player/parser/parser.js
+
+// @code_url https://raw.github.com/playtin/game-off-2012/master/public/js/main.js
+
+// ==/ClosureCompiler==
