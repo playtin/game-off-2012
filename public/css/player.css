@@ -9,7 +9,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
 }
 
 /* line 38, ../../app/assets/stylesheets/player.css.scss */
@@ -80,7 +79,7 @@
   top: 330px;
 }
 /* line 89, ../../app/assets/stylesheets/player.css.scss */
-#player .titleBar.interactive:hover {
+#player .titleBar.interactive.active, #player .titleBar.interactive:hover {
   top: 220px;
 }
 /* line 94, ../../app/assets/stylesheets/player.css.scss */
@@ -90,19 +89,18 @@
   left: 0;
   margin: 24px 16px;
   width: 608px;
-  height: 355px;
 }
-/* line 101, ../../app/assets/stylesheets/player.css.scss */
+/* line 100, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText strong {
   font-size: 20px;
   color: white;
 }
-/* line 105, ../../app/assets/stylesheets/player.css.scss */
+/* line 104, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText span {
   font-size: 13px;
   color: white;
 }
-/* line 109, ../../app/assets/stylesheets/player.css.scss */
+/* line 108, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText h2 {
   font-size: 13px;
   color: white;
@@ -114,7 +112,7 @@
   line-height: 35px;
   font-size: 11px;
 }
-/* line 120, ../../app/assets/stylesheets/player.css.scss */
+/* line 119, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText i {
   position: absolute;
   top: 0;
@@ -123,7 +121,7 @@
   left: 297px;
   opacity: 0.5;
 }
-/* line 127, ../../app/assets/stylesheets/player.css.scss */
+/* line 126, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText .instruction {
   font-size: 20px;
   color: white;
@@ -132,21 +130,14 @@
   text-align: center;
   font-weight: bold;
 }
-/* line 135, ../../app/assets/stylesheets/player.css.scss */
+/* line 134, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleText small {
   display: block;
   font-size: 13px;
   color: white;
   text-align: center;
 }
-/* line 141, ../../app/assets/stylesheets/player.css.scss */
-#player .titleBar .titleText .noticeMouse {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-/* line 150, ../../app/assets/stylesheets/player.css.scss */
+/* line 142, ../../app/assets/stylesheets/player.css.scss */
 #player .titleBar .titleBg {
   position: absolute;
   top: 0;
@@ -155,10 +146,11 @@
   height: 390px;
   background-color: #424755;
   opacity: 0.8;
+  height: 170px;
 }
 
 /* --- End --- */
-/* line 157, ../../app/assets/stylesheets/player.css.scss */
+/* line 150, ../../app/assets/stylesheets/player.css.scss */
 #player .endScreen {
   display: none;
   font-size: 32px;
@@ -174,36 +166,31 @@
   text-shadow: 1px 1px 0 #EEE;
 }
 
-/* line 170, ../../app/assets/stylesheets/player.css.scss */
+/* line 163, ../../app/assets/stylesheets/player.css.scss */
 #player .winScreen {
   color: #6cbb73;
 }
 
-/* line 174, ../../app/assets/stylesheets/player.css.scss */
+/* line 167, ../../app/assets/stylesheets/player.css.scss */
 #player .loseScreen {
   color: #cd5654;
 }
 
-/* line 178, ../../app/assets/stylesheets/player.css.scss */
+/* line 171, ../../app/assets/stylesheets/player.css.scss */
 .endBg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin: 132px auto 0;
   width: 640px;
-  height: 390px;
-  background-color: #424755;
-  opacity: 0.8;
-  top: 132px;
   height: 65px;
+  background-color: #424755;
   opacity: 0;
 }
 
 /* --- Error --- */
-/* line 187, ../../app/assets/stylesheets/player.css.scss */
+/* line 181, ../../app/assets/stylesheets/player.css.scss */
 #player .errorScreen {
   display: none;
 }
-/* line 190, ../../app/assets/stylesheets/player.css.scss */
+/* line 184, ../../app/assets/stylesheets/player.css.scss */
 #player .errorScreen h2 {
   position: absolute;
   top: 0;
@@ -217,7 +204,7 @@
 }
 
 /* --- Bar --- */
-/* line 202, ../../app/assets/stylesheets/player.css.scss */
+/* line 196, ../../app/assets/stylesheets/player.css.scss */
 #player .playerBar {
   height: 30px;
   width: 639px;
@@ -231,17 +218,17 @@
   box-shadow: 0 1px 1px #999;
 }
 
-/* line 211, ../../app/assets/stylesheets/player.css.scss */
+/* line 205, ../../app/assets/stylesheets/player.css.scss */
 #player .playerBar > * {
   float: left;
 }
 
-/* line 215, ../../app/assets/stylesheets/player.css.scss */
+/* line 209, ../../app/assets/stylesheets/player.css.scss */
 #player .playerBar:after {
   clear: both;
 }
 
-/* line 219, ../../app/assets/stylesheets/player.css.scss */
+/* line 213, ../../app/assets/stylesheets/player.css.scss */
 #player .playerTimeline {
   width: 486px;
   height: 8px;
@@ -250,13 +237,13 @@
   border-bottom: 1px solid #F3F3F3;
 }
 
-/* line 227, ../../app/assets/stylesheets/player.css.scss */
+/* line 221, ../../app/assets/stylesheets/player.css.scss */
 #player .playerTimeWrapper {
   margin-top: 6px;
   border-right: 1px solid #F3F3F3;
 }
 
-/* line 232, ../../app/assets/stylesheets/player.css.scss */
+/* line 226, ../../app/assets/stylesheets/player.css.scss */
 #player .playerTime {
   width: 44px;
   height: 20px;
@@ -265,7 +252,7 @@
   line-height: 21px;
 }
 
-/* line 240, ../../app/assets/stylesheets/player.css.scss */
+/* line 234, ../../app/assets/stylesheets/player.css.scss */
 #player .playerLogo {
   width: 58px;
   height: 20px;
