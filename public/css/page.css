@@ -4,9 +4,7 @@
   
   red: #CD5654;
   orange: #E49548;
-  blue: #2298B3;
-  blue: #0062B9;
-  blue: #0088CC;
+  blue: #367DBE;
   green: #6CBB73;
   gray: #777;
 */
@@ -24,7 +22,7 @@ body {
 .clear { clear: both; }
 
 .red { background-color: #CD5654; }
-.blue { background-color: #0088CC; }
+.blue { background-color: #367DBE; }
 .orange { background-color: #E49548; }
 .green { background-color: #6CBB73; }
 .gray { background-color: #777; }
