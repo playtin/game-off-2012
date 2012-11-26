@@ -117,7 +117,7 @@ function addToPlaylist( _title, _index, _isWin ) {
 
   // Remove last element if there are more than 5
   var items = ul.find(".box").not(".template");
-  if(items.length > 5) {    
+  if(items.length > 5) {
 
     var lastEle = items.last();
 
@@ -144,9 +144,6 @@ function updateScore( _isWin ) {
 
 (function($){
     $.fn.disableSelection = function() {
-        return this
-                 .attr('unselectable', 'on')
-                 .css('user-select', 'none')
-                 .on('selectstart', false);
+        return this.attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);
     };
 })(jQuery);
