@@ -55,6 +55,21 @@ header h3 {
   margin: 0;
 }
 
+#navi li {
+  position:relative;
+  cursor:pointer;
+}
+
+#navi li .title {
+  width:122px;
+  position:absolute;
+  bottom:4px;
+  padding:4px;
+  color:#FFF;
+  background:#222;
+  opacity: 0.8;
+}
+
 /* COLUMNS */
 #colLeft {
   width: 666px;
