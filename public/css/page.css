@@ -162,3 +162,23 @@ ul.playlist li.template {
 #infoboxes .span3 {
   width: 203px;
 }
+
+#facebook_sidebutton {
+  height:41px;
+  width:40px;
+  background:url('../images/facebook_playtin.png');
+  position:absolute;
+  left:0px;
+  top:180px;
+  cursor:pointer;
+}
+
+#twitter_sidebutton {
+  height:39px;
+  width:40px;
+  background:url('../images/twitter_playtin.png');
+  position:absolute;
+  left:0px;
+  top:215px;
+  cursor:pointer;
+}
