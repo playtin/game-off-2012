@@ -27,7 +27,8 @@ If you want, you can try it out by yourself and [create your own](http://playtin
 
 ## What we have used:
 
-* JQuery
-* Bootstrap
-* TAU.js :)
-* Heroku for hosting
+* [jQuery](http://jquery.com/)
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+* [requestAnimationFrame shim](http://paulirish.com/2011/requestanimationframe-for-smart-animating/)
+* [TAU.js](https://github.com/egraether/Tau.js) :)
+* [Heroku](http://www.heroku.com/) for hosting
