@@ -1,14 +1,3 @@
-/*
-  font: #424755;
-  bg: #F6F6F6;
-  
-  red: #CD5654;
-  orange: #E49548;
-  blue: #367DBE;
-  green: #6CBB73;
-  gray: #777;
-*/
-
 body {
   background: #F6F6F6 url('../images/bg.png');
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
@@ -55,19 +44,29 @@ header h3 {
   margin: 0;
 }
 
-#navi li {
+#navi li, #games li {
   position:relative;
   cursor:pointer;
 }
 
-#navi li .title {
+#games {
+  margin: 10px 80px;
+}
+
+#games li {
+  width: 130px;
+  float: left;
+  margin: 10px;
+}
+
+#navi li .title, #games li .title {
   width:122px;
   position:absolute;
   bottom:4px;
   padding:4px;
   color:#FFF;
-  background:#222;
-  opacity: 0.8;
+  background: rgba(68, 73, 80, 0.8);
+  font-weight: bold;
 }
 
 /* COLUMNS */
@@ -98,29 +97,6 @@ header h3 {
   text-align: center;
   margin: 50px 0 20px;
   font-size: 2.4em;
-}
-
-#player #gameOverlay #games {
-  margin: 10px 83px;
-  list-style-type: none;
-}
-
-#player #gameOverlay #games li {
-  width: 105px;
-  height: 65px;
-  margin: 10px;
-  float: left;
-  line-height: 64px;
-  font-size: 18pt;
-}
-
-#player #messageOverlay {
-  display:none;
-}
-
-#player #messageOverlay .confirm {
-  margin: 0 auto;
-  width: 200px;
 }
 
 /* PLAYLIST */
