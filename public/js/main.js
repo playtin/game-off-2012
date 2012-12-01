@@ -1,18 +1,8 @@
 var player,
-  gamePlayed = [0, 0, 0, 0, 0],
   gameOrder = [0, 1, 2, 3, 4 ],
-  gameIndex = 0,
-  messageAppeared = false;
+  gameIndex = 0;
 
 function player_main() {
-  
-  // var names = ['push', 'pull', 'clone', 'branch', 'fork'];
-  // 
-  // for (var i = 0; i < 10; i++) {
-  //   
-  //   addToPlaylist( names[i % 5], i % 5, Math.random() > 0.5, Math.random() * 10 );
-  //   
-  // }
   
   function playIndex() {
     
@@ -68,29 +58,11 @@ function play_game( _index ) {
   
   player.onRestart = function( _isWin ) {
     
-    /*
-    $.ajax({
-      url : '/games/' + game_id + '/played',
-      data : { win : _isWin },
-      type : 'PUT',
-      success : function() {}
-    });
-    */
-    
-    addToPlaylist( game.data.title, _index, _isWin, player.timePlayed / 1000 );
+    addToPlaylist( game.name, _index, _isWin, player.timePlayed / 1000 );
     
     if ( isEndlessMode() ) {
       
       play_game( 5 );
-      
-    }
-    
-    gamePlayed[ _index ] = 1;
-    
-    if ( !messageAppeared && gamePlayed.every( function( e ) { return e === 1; } ) ) {
-      
-      $( "#messageOverlay" ).show();
-      messageAppeared = true;
       
     }
     
